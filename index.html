@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPR jogo dos 15</title>
+</head>
+<style>
+  #img_fundo{
+    position: absolute;
+    width: 720px;
+    height: 400px;
+  }
+  #img_titulo{
+    position: absolute;
+    width: 270px;
+    height: 200px;
+    left: 40px;
+    top: 10 px;
+  }
+  #img_grid_abertura{
+    position: absolute;
+    left: 320px;
+    top: 10 px;
+  }
+  #img_bt_iniciar{
+    position: absolute;
+    left: 120px;
+    top: 220px;
+  }
+  #img_grid_jogo{
+    position: absolute;
+    width: 720px;
+    height: 400px;
+  }
+  #img_bt_fim_de_jogo{
+    position: absolute;
+    left: 650px;
+    top: 10px;
+  }
+
+  #img_bt_Reinicia{
+    position: absolute;
+    left: 650px;
+    top: 10px;
+  }
+
+  #img_email{
+    position: absolute;
+    left: 80px;
+    top: 330px;
+  }
+  #tabela{
+    -webkit-text-stroke-width: 1px; /* largura da borda */
+    -webkit-text-stroke-color: #000; /* cor da borda */
+    font-size: 30px;
+    color:yellow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: right;
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    height: 300px;
+    width: 600px;
+   }
+   #n1, #n2, #n3, #n4, #n5, #n6, #n7, #n8{
+    width: 400px;
+    text-align: left;
+    background-color: 0;
+    border: 2px rgb(0,0.0);
+    width: 500px;
+    text-align: left;
+   }
+   #img_tempo{
+     position: absolute;
+     left: 440px;
+     top: 20px;
+   }
+   #tempo{
+     -webkit-text-stroke-width: 2px;
+     -webkit-text-stroke-color:black;
+     box-shadow:black;
+     position: absolute;
+     text-align: center;
+     color:white;
+     font-size: 35px;
+     font-weight: bold;
+     font-family: Arial, Helvetica, sans-serif;
+     margin:0;
+     left: 550px;
+     top: 23px;
+   }
+
+   #img_som{
+     position: absolute;
+     left: 550px;
+     top: 350px;
+   }
+   #som{
+    -webkit-text-stroke-width: 2px;
+     -webkit-text-stroke-color:black;
+     box-shadow:black;
+     position: absolute;
+     text-align: center;
+     color: white;
+     font-size: 25px;
+     font-weight: bold;
+     font-family: Arial, Helvetica, sans-serif;
+     left: 555px;
+     top: 352px;
+   }
+</style>
+
+<body>
+    <div id="Tela_Inicial">
+      <img id="img_fundo" src="imagens/fundo.png" alt="">
+      <img id="img_titulo" src="imagens/titulo.png" alt="">
+      <img id="img_grid_abertura" src="Imagens/grid_abertura.png" alt="">
+      <img id="img_bt_iniciar" src="imagens/bt_iniciar.png" alt="">
+      <img id="img_email" src="Imagens/email.png" alt="">
+   </div>
+
+   <div  id="Tela_Jogo">
+      <img id="img_grid_jogo" src="imagens/grid_jogo.png" alt="">
+      <img id="img_bt_fim_de_jogo" src="Imagens/bt_fim_de_jogo.png" alt="">
+      <img id="p1" onclick= "BotaoClique(1)" src="Imagens/p1.png" alt="">
+      <img id="p2" onclick= "BotaoClique(2)" src="Imagens/p2.png" alt="">
+      <img id="p3" onclick= "BotaoClique(3)" src="Imagens/p3.png" alt="">
+      <img id="p4" onclick= "BotaoClique(4)" src="Imagens/p4.png" alt="">
+      <img id="p5" onclick= "BotaoClique(5)" src="Imagens/p5.png" alt="">
+      <img id="p6" onclick= "BotaoClique(6)" src="Imagens/p6.png" alt="">
+      <img id="p7" onclick= "BotaoClique(7)" src="Imagens/p7.png" alt="">
+      <img id="p8" onclick= "BotaoClique(8)" src="Imagens/p8.png" alt="">
+      <img id="p9" onclick= "BotaoClique(9)" src="Imagens/p9.png" alt="">
+      <img id="p10" onclick= "BotaoClique(10)" src="Imagens/p10.png" alt="">
+      <img id="p11" onclick= "BotaoClique(11)" src="Imagens/p11.png" alt="">
+      <img id="p12" onclick= "BotaoClique(12)" src="Imagens/p12.png" alt="">
+      <img id="p13" onclick= "BotaoClique(13)" src="Imagens/p13.png" alt="">
+      <img id="p14" onclick= "BotaoClique(14)" src="Imagens/p14.png" alt="">
+      <img id="p15" onclick= "BotaoClique(15)" src="Imagens/p15.png" alt="">
+      <Img id="img_tempo" src="Imagens/tempo.png" alt="">    
+      <div id="tempo"> <b>0</b></div> 
+      <Img id="img_som" onclick="HabilitaSom()" src="Imagens/som.png" alt="">    
+      <div id="som"> <b>X</b></div> 
+    </div>
+
+    <div id="Tela_Recordes">
+      <img src="imagens/recordes.png" alt="">
+      <img id="img_bt_Reinicia" src="Imagens/bt_fim_de_jogo.png" alt="">
+      <table id="tabela"> 
+        <tr> <td id="n1">Nome1</td> <td>600</td> </tr>
+        <tr> <td id="n2">Nome2</td> <td>600</td> </tr>
+        <tr> <td id="n3">Nome3</td> <td>600</td> </tr>
+        <tr> <td id="n4">Nome4</td> <td>600</td> </tr>
+        <tr> <td id="n5">Nome5</td> <td>600</td> </tr>
+        <tr> <td id="n6">Nome6</td> <td>600</td> </tr>
+        <tr> <td id="n7">Nome7</td> <td>600</td> </tr>
+        <tr> <td id="n8">Nome8</td> <td>600</td> </tr>
+       </table>
+
+   </div>
+</body>
+
+<script>
+    var TelaAtiva = "TelaInicial"; // TELA VISÍVEL
+    var malha = []; // MALHA DO JOGO
+    var pecas = []; // AS PEÇAS DO JOGO
+    var px = []; // COORDENADA X DAS PECAS DO JOGO
+    var py = []; // COORDENADA Y DAS PECAS DO JOGO
+    var recordes = []; //ARRAY DE RECOREDES
+    var tabela = document.getElementById("tabela"); // TABELA DE RECORDES
+    var som_peca = new Audio();  som_peca.src="Sons/peca.mp3";   // SOM DO MOVIMENTO DE PEÇA
+    var som_aplauso = new Audio();  som_aplauso.src="Sons/aplauso.mp3";   // SOM DE APLAUSO
+    var tempo_de_jogo = 0; // MARCA O TEMPO DE JOGO
+    var jogando = false; // TRUE SE ESTÁ JOGANDO
+    var som_ligado = true;
+   
+    // HABILITA OU DESABILITA SOM
+    function HabilitaSom(){
+      let som = document.getElementById("som");
+
+      if (som_ligado == true){
+        som.style.display = "none"
+        som_ligado = false;
+      } else{
+        som.style.display = "block";
+        som_ligado = true;
+      }
+    } 
+
+    // VERIFICA SE GANHOU
+    function VerificaSeGanhou(){
+       let verifica = 0;
+
+       for (let y=0; y < 4;y++){
+          for (let x=0; x < 4;x++){
+             if (malha[y][x] == y*4+x+1) {verifica++}
+          }
+       }
+       if (jogando == true && verifica == 15){
+          // VERIFICANDO SE BATEU RECORDES
+          let aux = -1;
+
+          for (let r=7; r >= 0; r--){
+            if (tempo_de_jogo < recordes[1][r]) {aux = r}
+          }
+          if (aux > -1) {
+            let nome_aux = prompt("Você bateu novo recorde. Digite seu nome ");
+
+            for (let i=7; i > aux;i--){
+              recordes[0][i] = recordes[0][i-1];
+              recordes[1][i] = recordes[1][i-1];
+            }
+            recordes[0][aux] = nome_aux;
+            recordes[1][aux] = tempo_de_jogo; 
+
+            for (let i = 0; i < 8; i++){
+              tabela.rows[i].cells[0].innerHTML = recordes[0][i];
+              tabela.rows[i].cells[1].innerHTML = recordes[1][i];
+            }   
+            document.getElementById('Tela_Inicial').style.display = "none";
+            document.getElementById('Tela_Jogo').style.display = "none";
+            document.getElementById('Tela_Recordes').style.display = "block";
+          }
+          jogando = false;
+          SalvaRecordes();  
+       }
+    }
+    // MOVIMENTA PEÇA
+    function BotaoClique(n){
+      let x = parseInt((px[n-1]-15)/91);
+      let y = parseInt((py[n-1]-15)/91);
+      
+      // MOVENDO PARA A DIREITA
+      if (x < 3 && malha[y][x+1] == 0){
+        malha[y][x+1] = malha[y][x];
+        malha[y][x] = 0;
+        px[n-1] += 91;
+        pecas[n-1].style.left = px[n-1]+"px";
+        if (som_ligado == true) {som_peca.play();}
+      }
+      // MOVENDO PARA A ESQUERDA
+      if (x > 0 && malha[y][x-1] == 0){
+        malha[y][x-1] = malha[y][x];
+        malha[y][x] = 0;
+        px[n-1] -= 91;
+        pecas[n-1].style.left = px[n-1]+"px";
+        if (som_ligado == true) {som_peca.play();}
+      }
+      // MOVENDO PARA A BAIXO
+      if (y < 3 && malha[y+1][x] == 0){
+        malha[y+1][x] = malha[y][x];
+        malha[y][x] = 0;
+        py[n-1] += 91;
+        pecas[n-1].style.top = py[n-1]+"px";
+        if (som_ligado == true) {som_peca.play();}
+      }
+      // MOVENDO PARA A CIMA
+      if (y > 0 && malha[y-1][x] == 0){
+        malha[y-1][x] = malha[y][x];
+        malha[y][x] = 0;
+        py[n-1] -= 91;
+        pecas[n-1].style.top = py[n-1]+"px";
+        if (som_ligado == true) {som_peca.play();}
+      }
+      VerificaSeGanhou();
+    }
+
+    // SORTEIA UMA POSIÇÃO INICIAL PARA O JOGO
+    function SorteiaPosicaoInicial(){
+      malha[0]=[1,2,3,4];
+      malha[1]=[5,6,7,8];
+      malha[2]=[9,10,11,12];
+      malha[3]=[13,14,15,0];
+      MontaPecasOrdenadas();
+      for (let r = 0; r < 1000;++r)
+      {
+	      let ax = parseInt(Math.random()*15+1);
+	      BotaoClique(ax);
+      }
+    }
+    function MontaPecasOrdenadas(){
+      for (let n=0; n < 15; n++){
+        pecas.push(document.getElementById("p"+(n+1)));
+        pecas[n].style.position = "absolute";
+        let x = n % 4;
+        let y = parseInt(n/4);
+
+        px[n] = 15+x*91;
+        pecas[n].style.left = px[n]+"px";
+        py[n] = 15+y*91;
+        pecas[n].style.top = py[n]+"px";
+      }
+    }
+
+    // CARREGA RECORDES
+    function CarregaRecordes(){
+       // Converta o array em uma string JSON
+      const json = localStorage.getItem("GPRJOGODOS15");
+      // Salve o JSON no localStorage
+      recordes =JSON.parse(json);
+    }
+
+    //  SALVA RECORDES
+    function SalvaRecordes(){
+      // Converta o array em uma string JSON
+       const json = JSON.stringify(recordes);
+
+
+       // Salve o JSON no localStorage
+       localStorage.setItem("GPRJOGODOS15", json);
+    }
+
+    // INICIA O JOGO
+    var btIniciar = document.getElementById('img_bt_iniciar');
+    btIniciar.addEventListener('click', () => {
+      document.getElementById('Tela_Inicial').style.display = "none";
+      document.getElementById('Tela_Jogo').style.display = "block";
+      document.getElementById('Tela_Recordes').style.display = "none";
+      SorteiaPosicaoInicial();
+      tempo_de_jogo = 0;
+      tempo.innerHTML = tempo_de_jogo; // ATUALIZANDO TEMPO 
+      jogando = true;
+    });
+
+    // ENCERRA JOGO
+    var btFimdeJogo = document.getElementById('img_bt_fim_de_jogo');
+    btFimdeJogo.addEventListener('click', () => {
+      document.getElementById('Tela_Inicial').style.display = "none";
+      document.getElementById('Tela_Jogo').style.display = "none";
+      document.getElementById('Tela_Recordes').style.display = "block";
+      tempo_de_jogo = 0;
+      tempo.innerHTML = tempo_de_jogo; // ATUALIZANDO TEMPO 
+      jogando = false;
+    });
+
+    // VOLTA A TELA INICIAL
+    var btFimdeJogo = document.getElementById('img_bt_Reinicia');
+    btFimdeJogo.addEventListener('click', () => {
+      document.getElementById('Tela_Inicial').style.display = "block";
+      document.getElementById('Tela_Jogo').style.display = "none";
+      document.getElementById('Tela_Recordes').style.display = "none";
+
+      SalvaRecordes();
+    });
+   
+    // ATUALIZA O TEMPO DE JOGO
+    function Incrementa_tempo(){
+      if (jogando == true){
+        tempo_de_jogo++;
+        tempo.innerHTML = tempo_de_jogo; // ATUALIZANDO TEMPO 
+      }
+    }
+
+    function InicializaRecordes(){
+      recordes[0] = ["none","none","none","none","none","none","none","none"];
+      recordes[1] = [600,600,600,600,600,600,600,600];
+     
+      if (localStorage.getItem("GPRJOGODOS15") === null) {} else {CarregaRecordes()};
+
+      for (let i = 0; i < 8; i++){
+         tabela.rows[i].cells[0].innerHTML = recordes[0][i];
+         tabela.rows[i].cells[1].innerHTML = recordes[1][i];
+      }   
+    }
+
+    InicializaRecordes();
+    setInterval(Incrementa_tempo, 1000);   
+    document.getElementById('Tela_Jogo').style.display = "none";
+    document.getElementById('Tela_Recordes').style.display = "none";
+</script>
+</html>
